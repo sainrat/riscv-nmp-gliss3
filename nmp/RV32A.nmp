@@ -1,0 +1,116 @@
+/*
+ *	RISC-V Instruction Set
+ *
+ *	This file is part of GLISS
+ *	Copyright (c) 2017, IRIT UPS.
+ *
+ *	GLISS is free software; you can redistribute it and/or modify
+ *	it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation; either version 2 of the License, or
+ *	(at your option) any later version.
+ *
+ *	GLISS is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *
+ *	You should have received a copy of the GNU General Public License
+ *	along with GLISS; if not, write to the Free Software
+ *	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+
+// 32-bit atomic instructions
+op rv32a =
+	  lr_w
+	| sc_w
+	| amoswap_w
+	| amoadd_w
+	| amoxor_w
+	| amoand_w
+	| amoor_w
+	| amomin_w
+	| amomax_w
+	| amominu_w
+	| amomaxu_w
+
+
+// addr = rs1, dest = rd
+op lr_w(aq: bool, rl: bool, addr: reg_t,dest: reg_t)
+	syntax = format("lr.w %s, (%s)", dest, addr) 
+	image  = format("00010 %1b %1b 00000 %s 010 %s 0101111", aq, rl, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+// src= rs2, addr=rs1, dest=rd
+op sc_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("sc.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("00011 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+// src= rs2, addr=rs1, dest=rd
+op amoswap_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amoswap.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("00001 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amoadd_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amoadd.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("00000 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amoxor_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amoxor.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("00100 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amoand_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amoand.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("01100 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amoor_w(aq: bool, rl: bool, src: reg_t, addr: reg_t,  dest: reg_t)
+	syntax = format("amoor.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("01000 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amomin_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amomin.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("10000 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amomax_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amomax.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("10100 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amominu_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amominu.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("11000 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
+
+op amomaxu_w(aq: bool, rl: bool, src: reg_t, addr: reg_t, dest: reg_t)
+	syntax = format("amomaxu.w %s, %s, (%s)", dest, src, addr) 
+	image  = format("11100 %1b %1b %s %s 010 %s 0101111", aq, rl, src, addr, dest)
+	action = {
+		// empty, no simulation
+	}
