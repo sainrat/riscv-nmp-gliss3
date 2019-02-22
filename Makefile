@@ -1,6 +1,6 @@
 # Makefile for the riscv architecture using GLISS V2
-# USE : make ARCH=RV32 or make ARCH=RV64
-
+# USE : make ARCH=RV32G or make ARCH=RV64G
+ARCH=RV32G
 # configuration
 GLISS_PREFIX	=../gliss2
 WITH_DISASM		= 1	# comment it to prevent disassembler building
@@ -51,10 +51,10 @@ GFLAGS = \
 	-m syscall:$(SYSCALL) \
 	-m sysparm:sysparm-reg32 \
 	-m code:code \
-	-m exception:extern/exception \
 	-m emu:extern/emu \
 	-m env:$(ENV) \
 	-a disasm.c
+	-m exception:extern/exception \
 
 #	-m fpi:extern/fpi \
 
@@ -137,7 +137,7 @@ only-clean:
 HOST_ENDIAN = $(shell python -c "import sys; print(sys.byteorder)")
 
 include/$(ARCH)/config.h: config.tpl
-	test -d include/$(ARCH) || mkdir include/$(ARCH)
+	test -d include/$(ARCH) || mkdir -p include/$(ARCH)
 	cp config.tpl $@
 	echo "#define TARGET_ENDIANNESS $(CPU_ENDIAN)" >> $@
 	echo "#define HOST_ENDIANNESS $(HOST_ENDIAN)" >> $@
