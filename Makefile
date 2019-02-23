@@ -53,8 +53,8 @@ GFLAGS = \
 	-m code:code \
 	-m emu:extern/emu \
 	-m env:$(ENV) \
-	-a disasm.c
-	-m exception:extern/exception \
+	-a disasm.c \
+	-m exception:extern/exception 
 
 #	-m fpi:extern/fpi \
 
