@@ -1,6 +1,5 @@
 # Makefile for the riscv architecture using GLISS V2
 # USE : make ARCH=RV32G or make ARCH=RV64G
-ARCH2=test
 ARCH=RV32G
 # configuration
 GLISS_PREFIX	=../gliss2
